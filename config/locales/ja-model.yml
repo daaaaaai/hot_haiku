@@ -1,0 +1,9 @@
+ja:
+  activerecord: &activerecord
+    models:
+      haiku: '俳句'
+
+    attributes:
+      haiku:
+        content: '句'
+        author_name: '詠み人'

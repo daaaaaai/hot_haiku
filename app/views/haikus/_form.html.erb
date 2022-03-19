@@ -1,8 +1,6 @@
 <%= form_with(model: haiku) do |form| %>
   <% if haiku.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(haiku.errors.count, "error") %> prohibited this haiku from being saved:</h2>
-
       <ul>
         <% haiku.errors.each do |error| %>
           <li><%= error.full_message %></li>
