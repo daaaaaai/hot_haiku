@@ -2,9 +2,6 @@
 
 <%= render @haiku %>
 
-<div>
-  <%= link_to "Edit this haiku", edit_haiku_path(@haiku) %> |
-  <%= link_to "Back to haikus", haikus_path %>
-
-  <%= button_to "Destroy this haiku", @haiku, method: :delete %>
+<div class="mt-3 d-grid">
+  <%= link_to "一覧に戻る", haikus_path, class: "btn btn-outline-secondary" %>
 </div>

@@ -11,6 +11,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <main>
+      <p style="color: green"><%= notice %></p>
+      <div class="container-md">
+        <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-xs-12">
+          <h1 class="display-1">HotHaiku</h1>
+
+          <hr>
+
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+    <%= render template: "layouts/_footer" %>
   </body>
 </html>

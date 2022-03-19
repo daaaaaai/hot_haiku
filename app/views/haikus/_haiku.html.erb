@@ -1,12 +1,17 @@
-<div id="<%= dom_id haiku %>">
-  <p>
-    <strong>Content:</strong>
+<div id="<%= dom_id haiku %>" class="card">
+  <div class="card-body">
     <%= haiku.content %>
-  </p>
+  </div>
 
-  <p>
-    <strong>Author name:</strong>
-    <%= haiku.author_name %>
-  </p>
-
+  <div class="card-footer">
+    <div class="d-flex justify-content-between flex-wrap">
+      <div>
+        <span><%=Haiku.human_attribute_name("haiku.author_name") %>: </span>
+        <%= haiku.author_name %>
+      </div>
+      <div class="ms-auto">
+        <%= datetimeformat(haiku.created_at) %>
+      </div>
+    </div>
+  </div>
 </div>
