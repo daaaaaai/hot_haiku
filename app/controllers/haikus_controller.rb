@@ -4,7 +4,7 @@ class HaikusController < ApplicationController
     # flash[:notice] = "ようこそ"
 
     @haiku = Haiku.new
-    @haikus = Haiku.all
+    @haikus = Haiku.all.order(created_at: :desc)
   end
 
   # GET /haikus/1 or /haikus/1.json
@@ -19,7 +19,7 @@ class HaikusController < ApplicationController
 
     respond_to do |format|
       if @haiku.save
-        format.html { redirect_to haikus_url, notice: "Haiku was successfully created." }
+        format.html { redirect_to haikus_url, notice: "俳句を投稿しました" }
         format.json { render :show, status: :created, location: @haiku }
       else
         format.html { render :index, status: :unprocessable_entity }

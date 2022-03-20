@@ -5,39 +5,32 @@ class HaikusTest < ApplicationSystemTestCase
     @haiku = haikus(:one)
   end
 
-  test "visiting the index" do
+  test "トップページが俳句一覧" do
+    visit root_url
+    assert_selector "h1", text: "HotHaiku"
+  end
+
+  test "俳句を読める" do
     visit haikus_url
-    assert_selector "h1", text: "Haikus"
+
+    fill_in "author_name", with: @haiku.author_name
+    fill_in "content", with: @haiku.content
+    click_on "俳句を詠む"
+
+    assert_text "俳句を投稿しました"
   end
 
   test "should create haiku" do
     visit haikus_url
-    click_on "New haiku"
 
-    fill_in "Author name", with: @haiku.author_name
-    fill_in "Content", with: @haiku.content
-    click_on "Create Haiku"
+    fill_in "content", with: @haiku.content
+    click_on "俳句を詠む"
 
-    assert_text "Haiku was successfully created"
-    click_on "Back"
+    assin haiku = @haiku
+
+    assert_text "俳句を投稿しました"
+
+    assert_equal "詠み人知らず", Haiku.last.author_name
   end
 
-  test "should update Haiku" do
-    visit haiku_url(@haiku)
-    click_on "Edit this haiku", match: :first
-
-    fill_in "Author name", with: @haiku.author_name
-    fill_in "Content", with: @haiku.content
-    click_on "Update Haiku"
-
-    assert_text "Haiku was successfully updated"
-    click_on "Back"
-  end
-
-  test "should destroy Haiku" do
-    visit haiku_url(@haiku)
-    click_on "Destroy this haiku", match: :first
-
-    assert_text "Haiku was successfully destroyed"
-  end
 end
