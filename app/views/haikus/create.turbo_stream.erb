@@ -1,5 +1,8 @@
 <%= turbo_stream.replace 'new_haiku_form' do %>
-  <%= render template: "haikus/_form", locals: {haiku: @haiku} %>
+  <% # 一度replaceするとtubor_frame_tag も消えてしまうので再設定する  %>
+  <%= turbo_frame_tag 'new_haiku_form' do %>
+    <%= render template: "haikus/_form", locals: {haiku: @haiku} %>
+  <% end %>
 <% end %>
 
 <%= turbo_stream.prepend 'haikus' do %>

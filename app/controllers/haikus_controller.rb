@@ -12,7 +12,7 @@ class HaikusController < ApplicationController
     @haiku = Haiku.find(params[:id])
   end
 
-  # POST /haikus or /haikus.json
+  # POST /haikus
   def create
     @posted_haiku = Haiku.new(haiku_params)
     @haikus = Haiku.order(created_at: :desc).page(params[:page]).per(10)
@@ -20,12 +20,16 @@ class HaikusController < ApplicationController
     respond_to do |format|
       if @posted_haiku.save
         @haiku = Haiku.new
-        flash[:notice] = "俳句を投稿しました"
+        flash[:notice] = @posted_haiku.author_name + "として俳句を投稿しました"
         format.turbo_stream
-        format.html { redirect_to haikus_url}
-        format.json { render :show, status: :created, location: @posted_haiku }
       else
         @haiku = Haiku.new(haiku_params)
+
+        flash[:notice] = "投稿に失敗しました"
+        flash[:alert] = @posted_haiku.errors.map{|error|
+           error.full_message
+        }.join("\n")
+
         format.html { render :index, status: :unprocessable_entity }
         format.json { render json: @posted_haiku.errors, status: :unprocessable_entity }
       end
