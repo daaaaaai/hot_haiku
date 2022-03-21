@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "haiku#{@haiku.id}" do %>
+  <%= render template: "haikus/likes/_like", locals: {haiku: @haiku} %>
+<% end %>

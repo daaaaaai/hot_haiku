@@ -4,5 +4,8 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'term' => 'static_pages#term'
-  resources :haikus, only: [:show, :index, :create]
+  resources :haikus, only: [:show, :index, :create] do
+    # もっとシュッとした書き方ないだろうか・・・
+    post "like" => "haikus/likes#create"
+  end
 end

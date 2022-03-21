@@ -1,0 +1,2 @@
+module Haiku::LikesHelper
+end

@@ -1,7 +1,7 @@
 <%= form_with(model: haiku) do |form| %>
   <div class="mb-3">
     <%= form.label :content, class: "form-label" %>
-    <%= form.text_area :content, class: "form-control", placeholder: "普段の生活やちょっとした旅行のなかにハッとした光景や印象に残る出来事はなにかありませんか？それを句に吹き込んでみましょう" %>
+    <%= form.text_area :content, class: "form-control", placeholder: "普段の生活やちょっとした旅行のなかにハッとした光景や印象に残る出来事はなにかありませんか？それを句に吹き込んでみましょう", rows: 5 %>
   </div>
 
   <div class="mb-4">

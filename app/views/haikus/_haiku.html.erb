@@ -1,12 +1,22 @@
 <div id="<%= dom_id haiku %>" class="card">
   <div class="card-body">
-    <%= haiku.content %>
+    <div class="d-flex justify-content-between">
+      <div>
+        <%= haiku.content %>
+      </div>
+      <div class="ms-auto">
+        <%= render template: "haikus/likes/_like", locals: {haiku: haiku} %>
+      </div>
+    </div>
   </div>
 
   <div class="card-footer">
     <div class="d-flex justify-content-between flex-wrap">
       <div>
+        <% # デフォルト詠み人の場合、カラム名（詠み人）は非表示 %>
+        <% unless haiku.author_name == Haiku::DEFAULT_NAME  %>
         <span><%=Haiku.human_attribute_name("haiku.author_name") %>: </span>
+        <% end %>
         <%= haiku.author_name %>
       </div>
       <div class="ms-auto">

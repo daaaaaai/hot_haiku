@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_19_213230) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_21_130917) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_19_213230) do
     t.string "author_name", limit: 20, comment: "詠み人"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "like_count", default: 0, comment: "お気に入り"
   end
 
 end
