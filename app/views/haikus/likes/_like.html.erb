@@ -1,6 +1,0 @@
-<%= turbo_frame_tag "haiku#{haiku.id}" do %>
-  <%= link_to haiku_like_path(haiku.id), data: { turbo_method: :post }, class: "text-decoration-none text-danger" do %>
-    <i class="bi bi-heart-fill me-1"></i>
-    <%= haiku.like_count %>
-  <% end %>
-<% end %>

@@ -5,7 +5,10 @@
         <%= haiku.content %>
       </div>
       <div class="ms-auto">
-        <%= render template: "haikus/likes/_like", locals: {haiku: haiku} %>
+        <%= link_to haiku_like_path(haiku.id), data: { turbo_method: :post, controller: "haiku-like", action: "click->haiku-like#like_animation" }, class: "text-decoration-none text-danger d-block" do %>
+          <i class="bi bi-heart-fill me-1"></i>
+          <%= render template: "haikus/likes/_like_count", locals: {haiku: haiku} %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -10,3 +10,19 @@ body{
     Meiryo,
     sans-serif;
 }
+
+.icon_vertical{
+  animation: vertical 3s ease 0.1s;
+}
+
+@keyframes vertical {
+  0%, 16%, 8% {
+    transform: translate(0, -2px);
+  }
+  12%, 20%, 4% {
+    transform: translate(0, 10px);
+  }
+  100%, 22% {
+    transform: translate(0, 0);
+  }
+}
