@@ -11,14 +11,15 @@
   </head>
 
   <body>
+    <div class="m-2">
+      <%= render template: "layouts/_notice" %>
+    </div>
+
     <main>
-      <p style="color: green"><%= notice %></p>
       <div class="container-md">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-xs-12">
           <h1 class="display-1">HotHaiku</h1>
-
           <hr>
-
           <%= yield %>
         </div>
       </div>
