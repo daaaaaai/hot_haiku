@@ -4,7 +4,7 @@ class HaikusController < ApplicationController
     # flash[:notice] = "ようこそ"
 
     @haiku = Haiku.new
-    @haikus = Haiku.all.order(created_at: :desc)
+    @haikus = Haiku.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   # GET /haikus/1 or /haikus/1.json
@@ -15,11 +15,12 @@ class HaikusController < ApplicationController
   # POST /haikus or /haikus.json
   def create
     @haiku = Haiku.new(haiku_params)
-    @haikus = Haiku.all
+    @haikus = Haiku.order(created_at: :desc).page(params[:page]).per(10)
 
     respond_to do |format|
       if @haiku.save
-        format.html { redirect_to haikus_url, notice: "俳句を投稿しました" }
+        flash[:notice] = "俳句を投稿しました"
+        format.html { redirect_to haikus_url}
         format.json { render :show, status: :created, location: @haiku }
       else
         format.html { render :index, status: :unprocessable_entity }
