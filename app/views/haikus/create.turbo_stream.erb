@@ -1,0 +1,9 @@
+<%= turbo_stream.replace 'new_haiku_form' do %>
+  <%= render template: "haikus/_form", locals: {haiku: @haiku} %>
+<% end %>
+
+<%= turbo_stream.prepend 'haikus' do %>
+  <div class="mt-3">
+    <%= render @posted_haiku %>
+  </div>
+<% end %>

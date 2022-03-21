@@ -1,12 +1,16 @@
-<%= render template: "haikus/_form", locals: {haiku: @haiku} %>
+<%= turbo_frame_tag 'new_haiku_form' do %>
+  <%= render template: "haikus/_form", locals: {haiku: @haiku} %>
+<% end %>
 
 <hr>
 
 <div class="">
-  <% @haikus.each do |haiku| %>
-    <div class="mt-3">
-      <%= render haiku %>
-    </div>
+  <%= turbo_frame_tag 'haikus' do %>
+    <% @haikus.each do |haiku| %>
+      <div class="mt-3">
+        <%= render haiku %>
+      </div>
+    <% end %>
+    <%= paginate @haikus %>
   <% end %>
-  <%= paginate @haikus %>
 </div>
