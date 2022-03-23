@@ -12,10 +12,10 @@ class HaikusControllerTest < ActionDispatch::IntegrationTest
 
   test "should create haiku" do
     assert_difference("Haiku.count") do
-      post haikus_url, params: { haiku: { author_name: @haiku.author_name, content: @haiku.content } }
+      post haikus_url(format: :turbo_stream), params: { haiku: { author_name: @haiku.author_name, content: @haiku.content } }
     end
 
-    assert_redirected_to haikus_url
+    assert_response :success
   end
 
   test "should show haiku" do

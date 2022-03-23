@@ -54,3 +54,5 @@ bin/dev
 js がビルドされないときは yarn build 、
 css がビルドされないときは yarn build:css
 を使ってください
+
+# ライセンス
