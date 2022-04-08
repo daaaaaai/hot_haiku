@@ -2,8 +2,12 @@ ja:
   activerecord: &activerecord
     models:
       haiku: '俳句'
+      comment: '評'
 
     attributes:
       haiku:
         content: '句'
         author_name: '詠み人'
+      comment:
+        content: '評'
+        name: 'お名前'

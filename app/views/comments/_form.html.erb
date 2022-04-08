@@ -1,0 +1,31 @@
+<!-- Modal -->
+<%= turbo_frame_tag 'comment_form' do %>
+<div class="modal fade" id="comment_modal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="commentModalLabel">評</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with(model: Comment.new, url: comment_path) do |form| %>
+        <div class="modal-body">
+            <div class="mb-3">
+              <%= form.text_area :content, class: "form-control", placeholder: "句について温かいコメント（評）を書いてください", rows: 5 %>
+            </div>
+
+            <div class="mb-4">
+              <%= form.label :name, class: "form-label" %>
+              <%= form.text_field :name, placeholder: "おなまえ", class: "form-control" %>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+
+          <input id="comment_haiku_id" type="hidden" name="haiku_id" value="">
+          <%= form.submit "評を投稿する", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

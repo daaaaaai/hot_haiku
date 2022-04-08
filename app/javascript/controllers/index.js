@@ -3,6 +3,8 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+import CommentController from "./comment_controller.js"
 import HaikuLikeController from "./haiku_like_controller.js"
 
 application.register("haiku-like", HaikuLikeController)
+application.register("comment", CommentController)

@@ -23,6 +23,11 @@
         <%= haiku.author_name %>
       </div>
       <div class="ms-auto">
+        <i class="bi bi-chat-right-dots me-1"
+          data-controller="comment"
+          data-action="click->comment#show_modal"
+          data-haiku_id="<%= haiku.id %>">
+        </i>
         <%= datetimeformat(haiku.created_at) %>
       </div>
     </div>

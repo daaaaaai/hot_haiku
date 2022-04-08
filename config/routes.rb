@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     # もっとシュッとした書き方ないだろうか・・・
     post "like" => "haikus/likes#create"
   end
+
+  resource :comment, only: :create
 end
